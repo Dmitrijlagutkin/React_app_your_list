@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        marginBottom: "10px",
     },
     title: {
         fontWeight: "800",

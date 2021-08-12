@@ -1,10 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles((theme) => ({
-    headerBackground: {
-        width: "100vw",
-        backgroundColor: "#E0B8B9",
-    },
     header: {
         textAlign: "center",
         padding: "10px",
@@ -12,6 +8,14 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
         alignItems: "center",
         height: "70px",
+    },
+    modalChildren: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+    inputClassName: {
+        width: "280px",
     },
 }))
 
