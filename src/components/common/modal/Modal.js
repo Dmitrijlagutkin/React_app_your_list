@@ -54,7 +54,7 @@ export default function Modal({
                 <div className={classes.header}>
                     {withBackButton ? (
                         <ArrowBackIcon
-                            small
+                            size='small'
                             className={classes.closeBackButton}
                         />
                     ) : (
@@ -63,7 +63,7 @@ export default function Modal({
                     <span className={classes.title}>{title}</span>
                     {withCloseButton ? (
                         <CloseIcon
-                            small
+                            size='small'
                             className={classes.closeBackButton}
                             onClick={onClose}
                         />

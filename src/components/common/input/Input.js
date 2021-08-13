@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const MyInput = ({ label, inputClassName }) => {
+const MyInput = ({ label, inputClassName, onChange }) => {
     const classes = useStyles()
 
     return (
@@ -22,7 +22,7 @@ const MyInput = ({ label, inputClassName }) => {
                 variant='outlined'
                 size='small'
                 className={inputClassName}
-                required
+                onChange={onChange}
             />
         </form>
     )

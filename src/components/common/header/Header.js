@@ -1,14 +1,22 @@
 import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import Button from "../button/Button"
 import useStyles from "./headerStyles"
 import Paper from "@material-ui/core/Paper"
 import Modal from "../modal/Modal"
 import MyInput from "../input/Input"
+import { setTest } from "../../../redux/reducers/reducer"
 
 const Header = ({ titleText }) => {
     const classes = useStyles()
+    const dispatch = useDispatch()
     const [isOpenEmailModal, setIsOpenEmailModal] = useState(false)
-    const onClickIsOpenEmailModal = () => setIsOpenEmailModal(!isOpenEmailModal)
+    const [userEmail, setUserEmail] = useState("")
+    const onClickIsOpenEmailModal = () => {
+        dispatch(setTest(true))
+        setIsOpenEmailModal(!isOpenEmailModal)
+    }
+
     return (
         <div>
             <Paper elevation={3}>
@@ -29,10 +37,13 @@ const Header = ({ titleText }) => {
                         <MyInput
                             label='enter your email'
                             inputClassName={classes.inputClassName}
+                            onChange={(e) => setUserEmail(e.target.value)}
                         />
+
                         <Button
                             onClick={onClickIsOpenEmailModal}
                             buttonText='send to your mail'
+                            disabled={!userEmail && true}
                         />
                     </div>
                 </Modal>
