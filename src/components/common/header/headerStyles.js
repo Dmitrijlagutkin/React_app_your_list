@@ -17,6 +17,11 @@ const useStyles = makeStyles((theme) => ({
     inputClassName: {
         width: "280px",
     },
+    error: {
+        color: "red",
+        fontSize: "12px",
+        paddingLeft: "10px",
+    },
 }))
 
 export default useStyles

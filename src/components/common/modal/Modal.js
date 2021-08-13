@@ -17,9 +17,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "rgba(0, 0, 0, 0.4)",
     },
     modal: {
-        height: "100px",
-        width: "500px",
-        padding: "10px",
+        padding: "15px 10px",
     },
     header: {
         display: "flex",

@@ -5,17 +5,33 @@ import useStyles from "./headerStyles"
 import Paper from "@material-ui/core/Paper"
 import Modal from "../modal/Modal"
 import MyInput from "../input/Input"
-import { setTest } from "../../../redux/reducers/reducer"
+import { setTest } from "../../../redux/reducers/dataSlice"
+import { validateEmail } from "../../../halpers/validation"
 
 const Header = ({ titleText }) => {
     const classes = useStyles()
     const dispatch = useDispatch()
     const [isOpenEmailModal, setIsOpenEmailModal] = useState(false)
     const [userEmail, setUserEmail] = useState("")
+    const [userEmailDirty, setUserEmailDirty] = useState(false)
+    const [userEmailError, setUserEmailError] = useState(
+        validateEmail(userEmail)
+    )
     const onClickIsOpenEmailModal = () => {
         dispatch(setTest(true))
         setIsOpenEmailModal(!isOpenEmailModal)
     }
+
+    const blurHandler = () => {
+        setUserEmailDirty(true)
+    }
+
+    const onChangeEmailHandler = (e) => {
+        setUserEmail(e.target.value)
+        setUserEmailError(validateEmail(userEmail))
+    }
+
+    console.log(userEmail)
 
     return (
         <div>
@@ -37,15 +53,19 @@ const Header = ({ titleText }) => {
                         <MyInput
                             label='enter your email'
                             inputClassName={classes.inputClassName}
-                            onChange={(e) => setUserEmail(e.target.value)}
+                            onChange={(e) => onChangeEmailHandler(e)}
+                            onBlur={blurHandler}
                         />
 
                         <Button
                             onClick={onClickIsOpenEmailModal}
                             buttonText='send to your mail'
-                            disabled={!userEmail && true}
+                            disabled={userEmailError && "disabled"}
                         />
                     </div>
+                    {userEmailDirty && userEmailError && (
+                        <div className={classes.error}>{userEmailError}</div>
+                    )}
                 </Modal>
             )}
         </div>

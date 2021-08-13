@@ -11,7 +11,7 @@ export default function ContainedButtons({ buttonText, onClick, disabled }) {
                 onClick={onClick}
                 variant='contained'
                 color='primary'
-                disabled={disabled}>
+                disabled={!!disabled}>
                 {buttonText}
             </Button>
         </div>

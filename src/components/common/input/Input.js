@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const MyInput = ({ label, inputClassName, onChange }) => {
+const MyInput = ({ label, inputClassName, onChange, onBlur }) => {
     const classes = useStyles()
 
     return (
@@ -23,6 +23,7 @@ const MyInput = ({ label, inputClassName, onChange }) => {
                 size='small'
                 className={inputClassName}
                 onChange={onChange}
+                onBlur={onBlur}
             />
         </form>
     )
