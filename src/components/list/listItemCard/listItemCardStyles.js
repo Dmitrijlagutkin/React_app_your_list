@@ -30,6 +30,16 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: "20px",
         cursor: "pointer",
     },
+    modalChildren: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+    modalItemName: {
+        color: "red",
+        fontSize: "22px",
+        fontWeight: "600",
+    },
 }))
 
 export default useStyles

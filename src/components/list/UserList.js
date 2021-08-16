@@ -12,6 +12,7 @@ import {
     setUserListItem,
     deleteAllList,
 } from "../../redux/reducers/dataSlice"
+import EditIcon from "@material-ui/icons/Edit"
 
 const UserList = () => {
     const classes = useStyles()
@@ -33,9 +34,12 @@ const UserList = () => {
         setIsOpenAddItemModal(!isOpenAddItemModal)
 
     const onClickIsOpenDeleteAllModal = () => {
-        dispatch(deleteAllList())
-
         setIsOpenDeleteAllModal(!isOpenDeleteAllModal)
+    }
+
+    const onClickDeleteAll = () => {
+        setIsOpenDeleteAllModal(!isOpenDeleteAllModal)
+        dispatch(deleteAllList())
     }
 
     const onChangeTitleHandler = (e) => setListTitle(e.target.value)
@@ -64,10 +68,14 @@ const UserList = () => {
 
     return (
         <div>
-            {listTitle && (
+            {userListName && (
                 <div className={classes.titleWrapper}>
-                    <h1>{listTitle}</h1>
-                    <div className={classes.topButtonsWrapper}>
+                    <div className={classes.topWrapper}>
+                        <h1>{userListName}</h1>
+                        <EditIcon className={classes.editTitleIcon} />
+                    </div>
+
+                    <div className={classes.topWrapper}>
                         <Button
                             onClick={onClickIsOpenAddItemModal}
                             buttonText='add item'
@@ -81,7 +89,7 @@ const UserList = () => {
                     </div>
                 </div>
             )}
-            {listTitle.length ? (
+            {userListName ? (
                 userList.map((listItem, index) => (
                     <ListItemCard
                         key={listItem.id}
@@ -91,7 +99,9 @@ const UserList = () => {
                 ))
             ) : (
                 <div className={classes.titleWrapper}>
-                    <div className={classes.title}>Create your list</div>
+                    <div className={classes.title}>
+                        First, enter the name of the list
+                    </div>
                     <Button
                         onClick={onClickIsOpenTitleModal}
                         buttonText='enter the name of the list'
@@ -154,6 +164,23 @@ const UserList = () => {
                             enter the name of the list
                         </div>
                     )}
+                </Modal>
+            )}
+            {isOpenDeleteAllModal && (
+                <Modal
+                    title='Delete'
+                    onClose={onClickIsOpenDeleteAllModal}
+                    withCloseButton={true}>
+                    <div className={classes.modalChildren}>
+                        <span>
+                            Do you want to delete this list:{" "}
+                            <span className={classes.modalListName}>
+                                {userListName}
+                            </span>
+                        </span>
+
+                        <Button onClick={onClickDeleteAll} buttonText='Yes' />
+                    </div>
                 </Modal>
             )}
         </div>

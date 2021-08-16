@@ -6,10 +6,12 @@ import Paper from "@material-ui/core/Paper"
 import Modal from "../common/modal/Modal"
 import MyInput from "../common/input/Input"
 import { validateEmail } from "../../halpers/validation"
+import { selectUserList } from "../../redux/reducers/dataSlice"
 
 const Header = ({ titleText }) => {
     const classes = useStyles()
     const dispatch = useDispatch()
+    const userList = useSelector(selectUserList)
     const [isOpenEmailModal, setIsOpenEmailModal] = useState(false)
     const [userEmail, setUserEmail] = useState("")
     const [userEmailDirty, setUserEmailDirty] = useState(false)
@@ -37,6 +39,7 @@ const Header = ({ titleText }) => {
                     <Button
                         onClick={onClickIsOpenEmailModal}
                         buttonText='send to your mail'
+                        disabled={!userList.length && "disabled"}
                     />
                 </div>
             </Paper>

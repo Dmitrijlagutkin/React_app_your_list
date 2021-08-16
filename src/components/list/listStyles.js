@@ -31,8 +31,19 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "12px",
         paddingLeft: "10px",
     },
-    topButtonsWrapper: {
+    topWrapper: {
         display: "flex",
+        alignItems: "center",
+    },
+    editTitleIcon: {
+        color: "#3f51b5",
+        cursor: "pointer",
+        marginLeft: "15px",
+    },
+    modalListName: {
+        color: "red",
+        fontSize: "22px",
+        fontWeight: "600",
     },
 }))
 
