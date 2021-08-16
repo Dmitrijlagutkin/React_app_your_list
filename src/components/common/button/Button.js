@@ -2,7 +2,12 @@ import React from "react"
 import Button from "@material-ui/core/Button"
 import useStyles from "./buttonStyles"
 
-export default function ContainedButtons({ buttonText, onClick, disabled }) {
+export default function ContainedButtons({
+    buttonText,
+    onClick,
+    disabled,
+    color = "primary",
+}) {
     const classes = useStyles()
 
     return (
@@ -10,7 +15,7 @@ export default function ContainedButtons({ buttonText, onClick, disabled }) {
             <Button
                 onClick={onClick}
                 variant='contained'
-                color='primary'
+                color={color}
                 disabled={!!disabled}>
                 {buttonText}
             </Button>

@@ -10,6 +10,7 @@ import {
     setUserListName,
     selectUserListName,
     setUserListItem,
+    deleteAllList,
 } from "../../redux/reducers/dataSlice"
 
 const UserList = () => {
@@ -19,6 +20,7 @@ const UserList = () => {
     const userListName = useSelector(selectUserListName)
     const [isOpenTitleModal, setIsOpenTitlelModal] = useState(false)
     const [isOpenAddItemModal, setIsOpenAddItemModal] = useState(false)
+    const [isOpenDeleteAllModal, setIsOpenDeleteAllModal] = useState(false)
     const [listTitle, setListTitle] = useState(userListName || "")
     const [itemName, setItemName] = useState("")
     const [itemDescription, setItemDescription] = useState("")
@@ -30,13 +32,16 @@ const UserList = () => {
     const onClickIsOpenAddItemModal = () =>
         setIsOpenAddItemModal(!isOpenAddItemModal)
 
+    const onClickIsOpenDeleteAllModal = () => {
+        dispatch(deleteAllList())
+
+        setIsOpenDeleteAllModal(!isOpenDeleteAllModal)
+    }
+
     const onChangeTitleHandler = (e) => setListTitle(e.target.value)
     const onChangeItemNameHandler = (e) => setItemName(e.target.value)
     const onChangeItemDescriptionHandler = (e) =>
         setItemDescription(e.target.value)
-
-    console.log("itemName", itemName)
-    console.log("itemDescription", itemDescription)
 
     const blurHandler = (e) => {
         console.log(e.target.value)
@@ -53,22 +58,27 @@ const UserList = () => {
     }
 
     const onClickConfirmItem = () => {
-        dispatch(setUserListItem({ id: 1, itemName, itemDescription }))
+        dispatch(setUserListItem({ id: Date.now(), itemName, itemDescription }))
         setIsOpenAddItemModal(false)
     }
-
-    console.log(userList)
-    console.log(listTitle)
 
     return (
         <div>
             {listTitle && (
                 <div className={classes.titleWrapper}>
                     <h1>{listTitle}</h1>
-                    <Button
-                        onClick={onClickIsOpenAddItemModal}
-                        buttonText='add item'
-                    />
+                    <div className={classes.topButtonsWrapper}>
+                        <Button
+                            onClick={onClickIsOpenAddItemModal}
+                            buttonText='add item'
+                        />
+                        <Button
+                            color='secondary'
+                            onClick={onClickIsOpenDeleteAllModal}
+                            buttonText='delete all list'
+                            disabled={!userList.length && "disabled"}
+                        />
+                    </div>
                 </div>
             )}
             {listTitle.length ? (

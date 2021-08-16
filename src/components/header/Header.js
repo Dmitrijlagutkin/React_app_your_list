@@ -5,7 +5,6 @@ import useStyles from "./headerStyles"
 import Paper from "@material-ui/core/Paper"
 import Modal from "../common/modal/Modal"
 import MyInput from "../common/input/Input"
-import { setTest } from "../../redux/reducers/dataSlice"
 import { validateEmail } from "../../halpers/validation"
 
 const Header = ({ titleText }) => {
@@ -18,7 +17,6 @@ const Header = ({ titleText }) => {
         validateEmail(userEmail)
     )
     const onClickIsOpenEmailModal = () => {
-        dispatch(setTest(true))
         setIsOpenEmailModal(!isOpenEmailModal)
     }
 
@@ -30,8 +28,6 @@ const Header = ({ titleText }) => {
         setUserEmail(e.target.value)
         setUserEmailError(validateEmail(userEmail))
     }
-
-    console.log(userEmail)
 
     return (
         <div>

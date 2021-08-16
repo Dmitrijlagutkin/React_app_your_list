@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "12px",
         paddingLeft: "10px",
     },
+    topButtonsWrapper: {
+        display: "flex",
+    },
 }))
 
 export default useStyles

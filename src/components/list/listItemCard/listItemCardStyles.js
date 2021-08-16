@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles((theme) => ({
     itemContainer: {
         display: "flex",
-        justifyContent: "start",
+        justifyContent: "space-between",
         margin: "0 auto",
         alignItems: "center",
         marginTop: "10px",
@@ -21,6 +21,14 @@ const useStyles = makeStyles((theme) => ({
     itemName: {
         paddingRight: "40px",
         width: "100px",
+    },
+    iconWrapper: {
+        textAlign: "end",
+    },
+    icon: {
+        fontSize: "18px",
+        paddingLeft: "20px",
+        cursor: "pointer",
     },
 }))
 
