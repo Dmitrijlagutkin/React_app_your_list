@@ -1,14 +1,21 @@
-const ListItemCard = ({ listItem, index, title }) => {
-    console.log("title", title)
+import useStyles from "./listItemCardStyles"
+import Paper from "@material-ui/core/Paper"
+
+const ListItemCard = ({ listItem, index }) => {
+    const classes = useStyles()
+
     return (
-        <div>
-            <h1>{title}</h1>
-            <div>
-                <span>{index + 1}</span>
-                <p>{listItem.text}</p>
-                <span>{listItem.description}</span>
+        <Paper elevation={1} className={classes.itemContainer}>
+            {/* <div className={classes.itemContainer}> */}
+            <div className={classes.itemWrapper}>
+                <span className={classes.itemNumber}>{index + 1}</span>
+                <span className={classes.itemName}>{listItem.itemName}</span>
+                <span className={classes.itemDescription}>
+                    {listItem.itemDescription}
+                </span>
             </div>
-        </div>
+            {/* </div> */}
+        </Paper>
     )
 }
 

@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import Button from "../button/Button"
+import Button from "../common/button/Button"
 import useStyles from "./headerStyles"
 import Paper from "@material-ui/core/Paper"
-import Modal from "../modal/Modal"
-import MyInput from "../input/Input"
-import { setTest } from "../../../redux/reducers/dataSlice"
-import { validateEmail } from "../../../halpers/validation"
+import Modal from "../common/modal/Modal"
+import MyInput from "../common/input/Input"
+import { setTest } from "../../redux/reducers/dataSlice"
+import { validateEmail } from "../../halpers/validation"
 
 const Header = ({ titleText }) => {
     const classes = useStyles()

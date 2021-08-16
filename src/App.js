@@ -1,5 +1,5 @@
 import UserList from "./components/list/UserList"
-import Header from "./components/common/header/Header"
+import Header from "./components/header/Header"
 import "./main-styles.css"
 
 function App() {
