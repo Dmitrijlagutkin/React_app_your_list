@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const MyInput = ({ label, inputClassName, onChange, onBlur }) => {
+const MyInput = ({ label, inputClassName, onChange, onBlur, defaultValue }) => {
     const classes = useStyles()
 
     return (
@@ -24,6 +24,7 @@ const MyInput = ({ label, inputClassName, onChange, onBlur }) => {
                 className={inputClassName}
                 onChange={onChange}
                 onBlur={onBlur}
+                defaultValue={defaultValue}
             />
         </form>
     )

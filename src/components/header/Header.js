@@ -7,6 +7,7 @@ import Modal from "../common/modal/Modal"
 import MyInput from "../common/input/Input"
 import { validateEmail } from "../../halpers/validation"
 import { selectUserList } from "../../redux/reducers/dataSlice"
+import emailjs from "emailjs-com"
 
 const Header = ({ titleText }) => {
     const classes = useStyles()
@@ -18,6 +19,7 @@ const Header = ({ titleText }) => {
     const [userEmailError, setUserEmailError] = useState(
         validateEmail(userEmail)
     )
+
     const onClickIsOpenEmailModal = () => {
         setIsOpenEmailModal(!isOpenEmailModal)
     }
@@ -29,6 +31,34 @@ const Header = ({ titleText }) => {
     const onChangeEmailHandler = (e) => {
         setUserEmail(e.target.value)
         setUserEmailError(validateEmail(userEmail))
+    }
+
+    // const templeteParams = JSON.stringify(userList)
+    // console.log(templeteParams)
+
+    // function sendEmail(templeteParams) {
+    //     // e.preventDefault()
+
+    //     emailjs
+    //         .sendForm(
+    //             "service_fku0dx4",
+    //             "template_6v8q34e",
+    //             templeteParams,
+    //             "user_jOur6AseerULiyKhFnWBs"
+    //         )
+    //         .then(
+    //             (result) => {
+    //                 console.log(result.text)
+    //             },
+    //             (error) => {
+    //                 console.log(error.text)
+    //             }
+    //         )
+    // }
+
+    const onClikSendEmail = () => {
+        // sendEmail(templeteParams)
+        setIsOpenEmailModal(!isOpenEmailModal)
     }
 
     return (
@@ -57,7 +87,7 @@ const Header = ({ titleText }) => {
                         />
 
                         <Button
-                            onClick={onClickIsOpenEmailModal}
+                            onClick={onClikSendEmail}
                             buttonText='send to your mail'
                             disabled={userEmailError && "disabled"}
                         />

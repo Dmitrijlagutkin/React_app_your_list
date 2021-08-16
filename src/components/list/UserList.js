@@ -72,7 +72,10 @@ const UserList = () => {
                 <div className={classes.titleWrapper}>
                     <div className={classes.topWrapper}>
                         <h1>{userListName}</h1>
-                        <EditIcon className={classes.editTitleIcon} />
+                        <EditIcon
+                            className={classes.editTitleIcon}
+                            onClick={onClickIsOpenTitleModal}
+                        />
                     </div>
 
                     <div className={classes.topWrapper}>
@@ -84,7 +87,7 @@ const UserList = () => {
                             color='secondary'
                             onClick={onClickIsOpenDeleteAllModal}
                             buttonText='delete all list'
-                            disabled={!userList.length && "disabled"}
+                            disabled={!userListName.length && "disabled"}
                         />
                     </div>
                 </div>
@@ -110,12 +113,17 @@ const UserList = () => {
             )}
             {isOpenTitleModal && (
                 <Modal
-                    title='Enter the name of the list'
+                    title={
+                        userListName
+                            ? "Edit the name of the list"
+                            : "Enter the name of the list"
+                    }
                     onClose={onClickIsOpenTitleModal}
                     withCloseButton={true}>
                     <div className={classes.modalChildren}>
                         <MyInput
                             label='enter the name of the list'
+                            defaultValue={userListName}
                             inputClassName={classes.inputClassName}
                             onChange={(e) => onChangeTitleHandler(e)}
                             onBlur={blurHandler}
